@@ -6,7 +6,7 @@ This repository contains the official code for the paper:
 ## 📌 Overview
 
 <p align="center">
-  <img src="fig1.pdf" width="800" />
+  <img src="fig1.jpg" width="800" />
 </p>
 
 **RAISED** (Retrieval And Inference-based Selection for Entity Disambiguation) is a modular framework that decouples the two core subproblems of Entity Disambiguation (ED):
