@@ -1,1 +1,53 @@
-# RAISED
+# RAISED: Retrieval And Inference-based Selection for Entity Disambiguation
+
+This repository contains the official code for the paper:  
+**"Select, Don't Train: The Benefits of Modular Entity Disambiguation with LLM-Based Selection"** *Submitted to ISWC 2026 (Research Track)*
+
+## 📌 Overview
+
+<p align="center">
+  <img src="fig1.pdf" width="800" />
+</p>
+
+**RAISED** (Retrieval And Inference-based Selection for Entity Disambiguation) is a modular framework that decouples the two core subproblems of Entity Disambiguation (ED):
+1. **Candidate Retrieval**: Sourcing potential entities from a Knowledge Base (KB).
+2. **Contextual Selection**: Identifying the correct entity from the retrieved set.
+
+Our research demonstrates that once selection is delegated to a capable Large Language Model (LLM), the need for specialized, training-intensive retrievers diminishes. A fully training-free **BM25 + LLM** pipeline achieves a new state-of-the-art on the ZELDA benchmark.
+
+### Key Contributions
+- **Modular Pipeline**: Decoupled retrieval and selection stages.
+- **State-of-the-Art Performance**: A training-free BM25 + LLM pipeline outperforms traditional dual-encoder models.
+- **Systematic Comparison**: Evaluations of BM25 (Sparse), Wikipedia API (Web Search), and VERBALIZED (Dense) retrievers.
+- **Abstention Mechanism**: The first LLM-based ED framework that allows for explicit "None of the Candidates" (NoC) predictions to handle retrieval failures.
+- **Broad Model Support**: Support for GPT-4.5/5.4 mini (Closed), Qwen2.5/32B, and Mistral-Small (Open-source).
+- **Data Efficiency**: Demonstrates that lightweight fine-tuning (QLoRA) with as few as 1,000 examples can make smaller open-source models competitive.
+
+---
+
+## 📊 Performance at a Glance (ZELDA Benchmark)
+
+| Retriever | Selector | In-KB Micro-F1 | Abstention-Aware F1 |
+| :--- | :--- | :---: | :---: |
+| Dual-Encoder (Baseline) | N/A | 82.3 | - |
+| **BM25** (Training-free) | GPT-5.4-mini | **86.3** (+4.0) | **90.7** |
+| **VERBALIZED** (Dense) | GPT-5.4-mini | **88.5** (+6.2) | **91.2** |
+
+---
+
+## 📂 Repository Structure
+
+```text
+RAISED/
+├── data/               # Scripts to process ZELDA and AIDA datasets
+├── retrieval/          # Stage 1: Candidate Generation
+│   ├── bm25_retriever.py    # BM25 over ZELDA entity dictionary
+│   ├── wiki_api_search.py   # Wikipedia Search API integration
+│   └── dense_retriever.py   # Repurposed VERBALIZED dual-encoder
+├── selection/          # Stage 2: LLM-Based Selection
+│   ├── prompts/             # Zero-shot prompt templates (Fig. 1)
+│   ├── inference.py         # Main script for GPT and Open LLMs
+│   └── finetuning/          # QLoRA scripts (Qwen-8B, Mistral-Nemo)
+├── evaluation/         # F1 and Abstention-aware scoring scripts
+├── requirements.txt
+└── README.md
