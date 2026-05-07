@@ -41,13 +41,13 @@ Our research demonstrates that once selection is delegated to a capable Large La
 RAISED/
 ├── data/               # Scripts to process ZELDA and AIDA datasets
 ├── retrieval/          # Stage 1: Candidate Generation
-│   ├── bm25_retriever.py    # BM25 over ZELDA entity dictionary
-│   ├── wiki_api_search.py   # Wikipedia Search API integration
-│   └── dense_retriever.py   # Repurposed VERBALIZED dual-encoder
-├── selection/          # Stage 2: LLM-Based Selection
-│   ├── prompts/             # Zero-shot prompt templates (Fig. 1)
-│   ├── inference.py         # Main script for GPT and Open LLMs
-│   └── finetuning/          # QLoRA scripts (Qwen-8B, Mistral-Nemo)
+│   ├── bm25/           # BM25 over ZELDA entity dictionary
+│   ├──verbalized/     # repurposed VERBALIZED dual-encoder
+│   └── wikipedia_api/  # Wikipedia Search API integration
+├── selector/          # Stage 2: LLM-Based Selection
+│   ├── finetuning/        # QLoRA scripts (Qwen-8B, Mistral-Nemo)
+│   ├── inference/         # Scripts for GPT and Open LLMs
+│   └── prompts/           # Zero-shot prompt templates (Fig. 1)
 ├── evaluation/         # F1 and Abstention-aware scoring scripts
 ├── requirements.txt
 └── README.md

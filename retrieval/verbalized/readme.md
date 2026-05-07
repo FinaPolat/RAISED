@@ -1,0 +1,1 @@
+VERBALIZED: https://github.com/flairNLP/VerbalizED?tab=readme-ov-file

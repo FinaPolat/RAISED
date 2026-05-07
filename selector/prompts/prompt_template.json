@@ -1,0 +1,8 @@
+{
+    "formatter": "Task:\nEntity linking is the task of identifying which knowledge base entry a marked mention refers to based on its context.\n\nYou are given:\n1. A text where the entity mention is marked as #mention#.\n2. The entity mention itself.\n3. A list of candidate Wikipedia entities. Each candidate contains an ID, title, and description.\n\nGoal:\nSelect the candidate whose entity BEST matches the meaning of the mention in the given context.\n\nDecision Guidelines:\n- Use the surrounding context to determine the intended entity.\n- Prefer the candidate whose description most closely matches the role, domain, or attributes implied by the text.\n- Ignore candidates that share the same name but refer to different concepts.\n- If no candidate clearly matches the mention, retrun: None of the candidates\n\nOutput Rules:\n- Output ONLY the candidate ID number.\n- Do NOT include explanations, text, or punctuation.\n- If no candidate applies, output exactly: None of the candidates\n\nNow perform entity linking for the following input:\n\nText:\n{context}\n\nEntity Mention:\n{mention}\n\nCandidates:\n{candidates}\n\nAnswer:\n",
+    "input variables": [
+        "context",
+        "mention",
+        "candidates"
+    ]
+}
