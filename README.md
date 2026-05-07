@@ -39,7 +39,7 @@ Our research demonstrates that once selection is delegated to a capable Large La
 
 ```text
 RAISED/
-├── data/               # Scripts to process ZELDA and AIDA datasets
+├── data/               # Instructions to download ZELDA datasets and VERBALIZED checkpoints and verbalizations
 ├── retrieval/          # Stage 1: Candidate Generation
 │   ├── bm25/           # BM25 over ZELDA entity dictionary
 │   ├──verbalized/     # repurposed VERBALIZED dual-encoder
